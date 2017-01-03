@@ -1,1 +1,1 @@
-# blod@geekbrains.ru
+# blog@geekbrains.ru
