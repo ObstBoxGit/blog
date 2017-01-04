@@ -16,8 +16,9 @@
 		include("../views/article_admin.php");
 	}
 	else {
-		$articles = articles_all($link);	
-		include("../views/article_admin.php");
+		$articles = articles_all($link);
+			
+		include("../views/articles_admin.php");
 	}
 ?>
 
