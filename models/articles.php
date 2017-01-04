@@ -34,11 +34,36 @@ function articles_get($link, $id){
 
 
 
-function articles_new($content, $title, $date){
-
+function articles_new($link, $title, $date, $content){
+	$title = trim($title);
+	$content = trim($content);
+	
+	
+	echo "<pre>";
+	var_dump($title);
+	var_dump($date);
+	var_dump($content);
+	echo "</pre>";
+	
+	
+	if ($title == '') return false;
+	
+	$t = "INSERT INTO articles (title, date, content) VALUES ('%s', '%s', '%s')";
+	
+	$query = sprintf($t, 
+				mysqli_real_escape_string($link, $title),
+				mysqli_real_escape_string($link, $date),
+				mysqli_real_escape_string($link, $content)
+	);
+	
+	echo $query;
+	$result = mysqli_query($link, $query);
+	if(! $result) die(mysqli_error($link));
+	
+	return true;
 }
 
-function articles_edit($id, $title, $date, $content){
+function articles_edit($link, $id, $title, $date, $content){
 
 }
 
