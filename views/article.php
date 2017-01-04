@@ -12,6 +12,7 @@
 	    <div>
 		<div class="article">
 		    <h3>
+			<?php $article = $articles[0];?>
 			<?=$article['title']?>
 		    </h3>
 		    <em>Опубликовано:<?=$article['date']?></em>

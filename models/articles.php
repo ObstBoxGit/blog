@@ -1,11 +1,20 @@
 <?php
-function articles_all(){
-    $art1 = ["id" => 1, "title" => "Title 1", "date" => "04-01-2017", "content" => "Content1"];
-    $art2 = ["id" => 2, "title" => "Title 2", "date" => "04-01-2017", "content" => "Content2"];
+function articles_all($link){
 
-    $arr[0] = $art1;
-    $arr[1] = $art2;
-    return $arr;
+    $query = "SELECT * FROM articles ORDER BY id DESC";
+    $result = mysqli_query($link, $query);
+    
+    if(!$result) die (mysqli_error($link));
+    
+    $n = mysqli_num_rows($result);
+    $articles = array();
+    
+    for ($i = 0; $i < $n; $i++)	{
+		$row = mysqli_fetch_assoc($result);
+		$articles[] = $row;
+	}
+	
+	return $articles;    
 }
 
 function articles_get($id){
