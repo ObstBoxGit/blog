@@ -6,9 +6,5 @@
 	$link = db_connect();
     $articles = articles_all($link);
     
-    //~ echo "<pre>";
-    //~ var_dump($article);
-	//~ echo "</pre>";
-    
-    include("views/article.php");
+    include("views/articles.php");
 ?>
