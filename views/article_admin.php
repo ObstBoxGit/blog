@@ -10,21 +10,22 @@
 		<div class="container">
 			<h3>Мой первый блог</h3>
 			<div>
-				<form method="post" action="index.php?action=add">
+<!-- 			такая конструкция нужна что бы сохранять при повторной передаче значение 'action' 			-->
+				<form method="post" action="index.php?action=<?=$_GET['action']?>&id=<?=$_GET['id']?>">
 					<label>
 						Название
 					</label>				
-					<input type="text" name="title" value="" class="form-item" autofocus required>
+					<input type="text" name="title" value="<?=$article['title']?>" class="form-item" autofocus required>					
 					
 					<label>
 						Дата
 					</label>				
-					<input type="date" name="date" class="form-item" required>
+					<input type="date" name="date" value="<?=$article['date']?>" class="form-item" required>
 
 					<label>
 						Содержимое
 					</label>
-					<textarea class="form-item" name="content" required></textarea>
+					<textarea class="form-item" name="content" required><?=$article['content']?></textarea>
 					
 					<input type="submit" value="Сохранить" class="btn">
 				</form>

@@ -38,14 +38,6 @@ function articles_new($link, $title, $date, $content){
 	$title = trim($title);
 	$content = trim($content);
 	
-	
-	echo "<pre>";
-	var_dump($title);
-	var_dump($date);
-	var_dump($content);
-	echo "</pre>";
-	
-	
 	if ($title == '') return false;
 	
 	$t = "INSERT INTO articles (title, date, content) VALUES ('%s', '%s', '%s')";
@@ -56,7 +48,6 @@ function articles_new($link, $title, $date, $content){
 				mysqli_real_escape_string($link, $content)
 	);
 	
-	echo $query;
 	$result = mysqli_query($link, $query);
 	if(! $result) die(mysqli_error($link));
 	
@@ -64,7 +55,25 @@ function articles_new($link, $title, $date, $content){
 }
 
 function articles_edit($link, $id, $title, $date, $content){
-
+	$title = trim($title);
+	$content = trim($content);
+	$date = trim($date);
+	$id = intval($id);
+	
+	
+	if ($title == '') return false;
+	
+	$sql = "UPDATE articles SET title='%s', content='%s', date='%s' WHERE id='%d'";
+	$query = sprintf($sql, 
+				mysqli_real_escape_string($link, $title),
+				mysqli_real_escape_string($link, $content),
+				mysqli_real_escape_string($link, $date),
+				$id);
+	
+	$result = mysqli_query($link, $query);
+	if(! $result) die(mysqli_error($link));
+	
+	return mysqli_affected_rows($link);
 }
 
 function articles_delete($id){
