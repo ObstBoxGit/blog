@@ -1,0 +1,7 @@
+AuthType Basic
+AuthName "Admin Panel"
+AuthUserFile /home/user/.htpasswd
+Require valid-user
+#<Files .htpasswd>
+#	deny from all 
+#</Files>
