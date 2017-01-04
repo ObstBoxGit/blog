@@ -13,7 +13,7 @@
 		<?php foreach($articles as $a): ?>
 		<div class="article">
 		    <h3>
-			<a href="articles.php?id=<?=$a['id']?>"><?=$a['title']?></a>
+			<a href="article.php?id=<?=$a['id']?>"><?=$a['title']?></a>
 		    </h3>
 		    <em>Опубликовано:<?=$a['date']?></em>
 		    <p><?=$a['content']?></p>

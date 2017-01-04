@@ -1,6 +1,8 @@
 <?php
-function articles_all($link){
 
+
+// show all
+function articles_all($link){
     $query = "SELECT * FROM articles ORDER BY id DESC";
     $result = mysqli_query($link, $query);
     
@@ -17,10 +19,20 @@ function articles_all($link){
 	return $articles;    
 }
 
-function articles_get($id){
 
-    return ["id" => 1, "title" => "Это простой заголовок", "date" => "04-01-2017", "content" => "Здесь когда-нибудь будет статья, братюни"];
+// show chosen
+function articles_get($link, $id){
+	$query = sprintf("SELECT * FROM articles WHERE id=%d", intval($id));
+    $result = mysqli_query($link, $query);
+    
+    if(!$result) die (mysqli_error($link));
+    
+    $article = mysqli_fetch_assoc($result);
+	return $article;
 }
+
+
+
 
 function articles_new($content, $title, $date){
 
